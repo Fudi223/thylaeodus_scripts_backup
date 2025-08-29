@@ -3,7 +3,7 @@
 # cdhit cluster trimming script
 
 import os
-# from tqdm import tqdm # type: ignore  # noqa: F401
+from tqdm import tqdm # type: ignore  # noqa: F401
 
 path_dir = os.path.dirname(os.path.realpath(__file__))
 file_name = os.path.join(path_dir, "trinity_95_cluster0.clstr")
@@ -22,9 +22,9 @@ for block in raw_data:
     raw_lines = block.split("\n")
     raw_lines = raw_lines[1:-1]
     for line in raw_lines:
-        line = line.split("_g")
+        line = line.split("_DN")
         line = line[1]
-        line = line.split(".")
+        line = line.split("i")
         line = line[0]
         cluster.add(line)
     cluster_list.append(cluster)    
@@ -34,7 +34,7 @@ for block in raw_data:
 
 cluster_new = []
 
-for cur in cluster_list:
+for cur in tqdm(cluster_list):
     int_found = False
     for cluster in cluster_new:
         cluster_int = cur.intersection(cluster)
