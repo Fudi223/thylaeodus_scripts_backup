@@ -44,7 +44,7 @@ for cur in tqdm(cluster_list):
             break
     if not int_found:
         cluster_new.append(cur)
-print(len(cluster_new))
+print("New amount of clusters : \n"(cluster_new))
     
         
 
